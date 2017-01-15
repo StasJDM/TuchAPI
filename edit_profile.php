@@ -1,5 +1,6 @@
 <?php
 
+
 if(isset($_GET["id"])){
 	$id=$_GET['id'];
 }
@@ -23,13 +24,7 @@ mysql_connect($mysql_host, $mysql_user, $mysql_password);
 mysql_select_db($mysql_database);
 mysql_set_charset('utf8');
 
-/*$q = mysql_query("SELECT `author_id` FROM `users_dialogs` WHERE (author_id='".$author_id."' AND client_id='".$client_id."') OR (author_id='".$client_id."' AND client_id='".$author_id."')");
-while($e=mysql_fetch_assoc($q))
-        $output[]=$e;
-$author = $output[0]['author_id'];
-echo ' Author Id: '.$author;*/
-
-$q=mysql_query("SELECT * FROM chat WHERE `_id` = '".$id."'");
+$q=mysql_query("SELECT * FROM users WHERE `_id` = '".$id."'");
 while($e=mysql_fetch_assoc($q))
         $output[]=$e;
 $new_password = $output[0]['password'];
@@ -57,8 +52,7 @@ if(isset($sex)){
 	}
 }
 
-//mysql_query("UPDATE `chat` SET `password` = '".$new_password."', `name` = '".$new_name."', `surname` = '".$new_surname."', `sex` = '".$new_sex."' WHERE _id ='".$id."'");
-mysql_query("UPDATE `chat` SET `password` = '".$new_password."', `name` = '".$new_name."', `surname` = '".$new_surname."', `sex` = '".$new_sex."' WHERE _id ='".$id."'");
+mysql_query("UPDATE `users` SET `password` = '".$new_password."', `name` = '".$new_name."', `surname` = '".$new_surname."', `sex` = '".$new_sex."' WHERE _id ='".$id."'");
 
 mysql_close();
 
