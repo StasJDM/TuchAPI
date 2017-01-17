@@ -48,7 +48,7 @@ if ($action == 'new_contact') {
 }
 
 if ($action == 'get_new_contacts') {
-	$q = mysql_query("SELECT `new_friend` FROM `chat` WHERE `_id` = '".$id."");
+	$q = mysql_query("SELECT `new_friend` FROM `users` WHERE `_id` = '".$id."");
 	while($e=mysql_fetch_assoc($q))
        		$output[]=$e;
 	print(json_encode($output));
